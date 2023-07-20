@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include ajna_lms *.css
+recursive-include ajna_lms *.csv
+recursive-include ajna_lms *.html
+recursive-include ajna_lms *.ico
+recursive-include ajna_lms *.js
+recursive-include ajna_lms *.json
+recursive-include ajna_lms *.md
+recursive-include ajna_lms *.png
+recursive-include ajna_lms *.py
+recursive-include ajna_lms *.svg
+recursive-include ajna_lms *.txt
+recursive-exclude ajna_lms *.pyc
