@@ -1,0 +1,129 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-08-02 18:27:56.545964",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "course",
+  "department",
+  "column_break_0lqyi",
+  "date",
+  "passing_percentage",
+  "employee",
+  "employee_name",
+  "quiz_details_section",
+  "quiz_id",
+  "questions",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "label": "Course",
+   "options": "LMS Course"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "LMS Department"
+  },
+  {
+   "fieldname": "column_break_0lqyi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "User"
+  },
+  {
+   "fetch_from": "employee.full_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quiz_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Quiz ID",
+   "options": "LMS Course Quiz",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quiz_details_section",
+   "fieldtype": "Section Break",
+   "label": "Quiz Details"
+  },
+  {
+   "fieldname": "questions",
+   "fieldtype": "Table",
+   "label": "Questions",
+   "options": "LMS Course Questions"
+  },
+  {
+   "default": "LMS-QUZ-ASS-.###",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "LMS-QUZ-ASS-.###"
+  },
+  {
+   "fetch_from": "course.passing_percentage",
+   "fieldname": "passing_percentage",
+   "fieldtype": "Float",
+   "label": "Passing percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LMS Course Quiz Assignment",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-09-04 12:41:25.683558",
+ "modified_by": "Administrator",
+ "module": "Ajna Lms",
+ "name": "LMS Course Quiz Assignment",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-08-02 18:46:26.127872",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tbsyd",
+  "employee",
+  "employee_name",
+  "column_break_h5uvh",
+  "date",
+  "course_quiz_assignment",
+  "answers_section",
+  "result",
+  "score_and_result_status_section",
+  "passing_percentage",
+  "score",
+  "column_break_0mmno",
+  "result_percentage",
+  "result_status",
+  "reference_section",
+  "course",
+  "column_break_etmf5",
+  "quiz",
+  "section_break_sauwp",
+  "amended_from",
+  "column_break_gezn7",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "label": "Course",
+   "options": "LMS Course"
+  },
+  {
+   "fieldname": "quiz",
+   "fieldtype": "Link",
+   "label": "Quiz",
+   "options": "LMS Course Quiz"
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "User"
+  },
+  {
+   "fetch_from": "employee.full_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LMS Course Quiz Answer Submission",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "result",
+   "fieldtype": "Table",
+   "options": "LMS Course Quiz Result"
+  },
+  {
+   "fieldname": "section_break_sauwp",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "column_break_gezn7",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "LMS-QUZ-ANS-.###",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "LMS-QUZ-ANS-.###",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reference_section",
+   "fieldtype": "Section Break",
+   "label": "Reference"
+  },
+  {
+   "fieldname": "course_quiz_assignment",
+   "fieldtype": "Link",
+   "label": "Course Quiz Assignment",
+   "options": "LMS Course Quiz Assignment"
+  },
+  {
+   "fieldname": "score",
+   "fieldtype": "Data",
+   "label": "Score"
+  },
+  {
+   "fetch_from": "course.passing_percentage",
+   "fieldname": "result_percentage",
+   "fieldtype": "Data",
+   "label": "Result Percentage",
+   "read_only": 1
+  },
+  {
+   "fieldname": "result_status",
+   "fieldtype": "Select",
+   "label": "Result Status",
+   "options": "\nPass\nFail"
+  },
+  {
+   "fieldname": "column_break_etmf5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_tbsyd",
+   "fieldtype": "Section Break",
+   "label": "Employee Details"
+  },
+  {
+   "fieldname": "column_break_h5uvh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Now",
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fieldname": "score_and_result_status_section",
+   "fieldtype": "Section Break",
+   "label": "Score and Result Status"
+  },
+  {
+   "fieldname": "column_break_0mmno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "answers_section",
+   "fieldtype": "Section Break",
+   "label": "Answers"
+  },
+  {
+   "fetch_from": "course_quiz_assignment.passing_percentage",
+   "fieldname": "passing_percentage",
+   "fieldtype": "Float",
+   "label": "Passing percentage",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-09-04 12:41:54.495316",
+ "modified_by": "Administrator",
+ "module": "Ajna Lms",
+ "name": "LMS Course Quiz Answer Submission",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

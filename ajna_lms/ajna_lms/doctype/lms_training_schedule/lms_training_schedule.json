@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2023-08-02 19:02:49.324351",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_lsp9c",
+  "year",
+  "department",
+  "column_break_exgq5",
+  "date",
+  "schedule_details_section",
+  "gmp_schedule",
+  "section_break_vozgq",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Year",
+   "options": "LMS Fiscal Year"
+  },
+  {
+   "fieldname": "column_break_exgq5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "schedule_details_section",
+   "fieldtype": "Section Break",
+   "label": "Schedule Details"
+  },
+  {
+   "fieldname": "gmp_schedule",
+   "fieldtype": "Table",
+   "label": "LMS Schedule",
+   "options": "GMP Schedule Details"
+  },
+  {
+   "fieldname": "section_break_vozgq",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "GMP-SCH-.YY.-.###"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "LMS Training Schedule",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "LMS Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_lsp9c",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-08-25 15:21:24.923841",
+ "modified_by": "Administrator",
+ "module": "Ajna Lms",
+ "name": "LMS Training Schedule",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
