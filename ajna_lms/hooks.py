@@ -13,10 +13,12 @@ app_license = "MIT"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/ajna_lms/css/ajna_lms.css"
 # app_include_js = "/assets/ajna_lms/js/ajna_lms.js"
+app_include_css = "/assets/ajna_lms/css/ajna_lms.css"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/ajna_lms/css/ajna_lms.css"
 # web_include_js = "/assets/ajna_lms/js/ajna_lms.js"
+web_include_css = "/assets/ajna_lms/css/ajna_lms.css"
 
 # include custom scss in every website theme (without file extension ".scss")
 # website_theme_scss = "ajna_lms/public/scss/website"
@@ -109,6 +111,7 @@ doctype_js = {"LMS Class" : "ajna_lms/custom/js/lms_class.js"}
 #		"on_trash": "method"
 #	}
 # }
+update_website_context= ["ajna_lms.www.ajna_lms.get_context"]
 
 # Scheduled Tasks
 # ---------------

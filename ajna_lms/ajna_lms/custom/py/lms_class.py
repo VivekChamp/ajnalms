@@ -23,5 +23,7 @@ def assign_quiz(lms_class):
                     assignment.employee = emp.student
                     assignment.save()
                     list_of_assignment.append(get_link_to_form("LMS Course Quiz Assignment", assignment.name))
-
-        frappe.msgprint(_("LMS Quiz Assignment - {0} has been created").format(comma_and(list_of_assignment)))
+        if list_of_assignment:
+            frappe.msgprint(_("LMS Quiz Assignment - {0} has been created").format(comma_and(list_of_assignment)))
+        else:
+            frappe.msgprint("No LMS Quiz is Assigned.. Kindly Check necessary Details")
