@@ -69,7 +69,7 @@
   {
    "fieldname": "result",
    "fieldtype": "Table",
-   "options": "LMS Course Quiz Result"
+   "options": "LMS Quiz Result"
   },
   {
    "fieldname": "section_break_sauwp",
@@ -161,7 +161,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-09-04 12:41:54.495316",
+ "modified": "2023-09-26 18:55:53.643100",
  "modified_by": "Administrator",
  "module": "Ajna Lms",
  "name": "LMS Course Quiz Answer Submission",

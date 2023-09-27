@@ -15,7 +15,9 @@
   "date",
   "department",
   "section_break_fb2hk",
-  "questions"
+  "questions",
+  "show_submission_history",
+  "show_answers"
  ],
  "fields": [
   {
@@ -71,11 +73,23 @@
    "fieldtype": "Float",
    "label": "Passing Percentage",
    "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "show_submission_history",
+   "fieldtype": "Check",
+   "label": "Show Submission History"
+  },
+  {
+   "default": "1",
+   "fieldname": "show_answers",
+   "fieldtype": "Check",
+   "label": "Show Answers"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-09-04 12:40:59.721419",
+ "modified": "2023-09-19 16:15:29.580924",
  "modified_by": "Administrator",
  "module": "Ajna Lms",
  "name": "LMS Course Quiz",

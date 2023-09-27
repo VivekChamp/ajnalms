@@ -1,5 +1,5 @@
 {% if not hide_quiz %}
-<div class="test">
+<div class="mt-4">
 	<ul class="alert alert-info pl-8">
 
 		<li>
@@ -29,7 +29,7 @@
 				{{ quiz.title }}
 			</div>
 
-			{% if not quiz.max_attempts or ajna_no_of_attempts < quiz.max_attempts %}
+			{% if not quiz.max_attempts or no_of_attempts < quiz.max_attempts %}
 			<button class="btn btn-secondary btn-sm btn-start-quiz mt-4">
 				{{ _("Start") }}
 			</button>
@@ -48,7 +48,7 @@
 		{% set instruction = _("Choose all answers that apply") if question.type == "Choices" and question.multiple else _("Choose one answer") if question.type == "Choices" else _("Enter the correct answer") %}
 
 		<div class="question hide" data-name="{{ question.name }}" data-type="{{ question.type }}"
-			data-multi="{{ question.multiple }}" data-qt-index="{{ loop.index }}">
+			data-multi="{{ question.multiple }}" data-qt-index="{{ loop.index }}" data-doctype='{{question.doctype}}'>
 			<div>
 				<div class="question-number">
 					{{ _("Question ") }}{{ loop.index }}: {{ instruction }}</div>
