@@ -111,7 +111,7 @@ doctype_js = {"LMS Class" : "ajna_lms/custom/js/lms_class.js"}
 #		"on_trash": "method"
 #	}
 # }
-update_website_context= ["ajna_lms.www.ajna_lms.get_context"]
+# update_website_context= ["ajna_lms.www.ajna_lms.get_context"]
 
 # Scheduled Tasks
 # ---------------
