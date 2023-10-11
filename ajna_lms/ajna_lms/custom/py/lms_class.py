@@ -35,9 +35,10 @@ def assign_quiz(lms_class):
                 assignment.quiz_id = course_quiz.name
                 assignment.questions = course_quiz.questions
                 assignment.employee = student
-                assignment.save()
-                assignment.submit()
-                list_of_assignment.append(get_link_to_form("LMS Course Quiz Assignment", assignment.name))
+                if not frappe.db.exists("LMS Course Quiz Assignment",{'employee':student,'course':course.course}):
+                    assignment.save()
+                    assignment.submit()
+                    list_of_assignment.append(get_link_to_form("LMS Course Quiz Assignment", assignment.name))
 
         if list_of_assignment:
             frappe.msgprint(_("LMS Quiz Assignment - {0} has been created").format(comma_and(list_of_assignment)))
