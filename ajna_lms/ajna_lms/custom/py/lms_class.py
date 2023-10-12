@@ -22,8 +22,11 @@ def assign_quiz(lms_class):
 
             # Distribute one quiz to each student in a round-robin manner
             for i, student in enumerate(students):
-                assigned_quiz = quizzes[i]
-                quiz_assignments[student] = [assigned_quiz]
+                assigned_quiz = quizzes[i % len(quizzes)]  # Use modulo to cycle through quizzes
+                if student in quiz_assignments:
+                    quiz_assignments[student].append(assigned_quiz)
+                else:
+                    quiz_assignments[student] = [assigned_quiz]
 
             # Print the quiz assignments
             for student, assigned_quizzes in quiz_assignments.items():
@@ -35,7 +38,7 @@ def assign_quiz(lms_class):
                 assignment.quiz_id = course_quiz.name
                 assignment.questions = course_quiz.questions
                 assignment.employee = student
-                if not frappe.db.exists("LMS Course Quiz Assignment",{'employee':student,'course':course.course}):
+                if not frappe.db.exists("LMS Course Quiz Assignment",{'employee':student,'docstatus':1,'course':course.course}):
                     assignment.save()
                     assignment.submit()
                     list_of_assignment.append(get_link_to_form("LMS Course Quiz Assignment", assignment.name))
