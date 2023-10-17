@@ -10,5 +10,33 @@ frappe.ui.form.on('LMS Class', {
                 })
 			},("Create"));
 		}
-	}
+	},
+    custom_update_checkin:async function(frm){
+        if (frm.is_new()) {
+        await frm.save()
+        }
+        frappe.call({
+            'method':"ajna_lms.ajna_lms.custom.py.lms_class.update_checkin",
+            "args":{
+                lms_class:frm.doc.name
+            },
+            callback:function(res){
+                frm.refresh()
+            }
+        })
+    },
+    custom_update_checkout:async function(frm){
+        if (frm.is_new()) {
+            await frm.save()
+        }
+        frappe.call({
+            'method':"ajna_lms.ajna_lms.custom.py.lms_class.update_checkout",
+            "args":{
+                lms_class:frm.doc.name
+            },
+            callback:function(res){
+                frm.refresh()
+            }
+        })
+    },
 });

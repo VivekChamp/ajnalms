@@ -301,6 +301,31 @@ def get_progress(course, lesson, member=None):
 
 
 def render_html(lesson):
+	allow_attend = True
+
+	if lesson.course:
+		course_doc = frappe.get_doc("LMS Course",lesson.course)
+		lesson_doc = frappe.get_doc("Course Lesson",lesson.name)
+		for i in course_doc.chapters:
+			lesson_list = frappe.get_all('Lesson Reference',{'parent':i.chapter},['lesson'],pluck='lesson')
+			break_check = 0
+			for j in lesson_list:
+				if j != lesson.name:
+					
+					check_doc = frappe.get_doc("Course Lesson",j)
+					progress = frappe.get_all("LMS Course Progress",{'member':frappe.session.user,'lesson':check_doc.name,'chapter':check_doc.chapter,'course':check_doc.course,'status':"Complete"})
+					if not len(progress) and not check_doc.custom_ignore_completion:
+						allow_attend = False
+						break
+					break_check = 0
+				else:
+					break_check = 1
+					break
+
+			if break_check:
+				break
+			
+
 	youtube = lesson.youtube
 	if lesson.is_final_assessment:
 		quiz_assign = frappe.get_all("LMS Course Quiz Assignment",{'course':lesson.course,'employee':frappe.session.user,'docstatus':1},['name','quiz_id'],as_list=True,order_by='creation desc')
@@ -315,12 +340,16 @@ def render_html(lesson):
 
 	if youtube and "/" in youtube:
 		youtube = youtube.split("/")[-1]
-	
-	if frappe.db.exists("LMS Quiz",quiz_id) and not lesson.is_final_assessment:
+		
+	if allow_attend and frappe.db.exists("LMS Quiz",quiz_id) and not lesson.is_final_assessment:
 		quiz_id = "{{ Quiz('" + quiz_id + "') }}" if quiz_id else ""
-	else:
-		quiz_id = "{{ CourseQuiz('" + quiz_id + "') }}" if quiz_id else ""
-
+	elif allow_attend:
+		quiz_id = "{{ CourseQuiz('" + quiz_id + "') }}" if quiz_id else "<center style='font-weight:bold;font-size:16px;color:black'><br>No Quiz Assigned</center>"
+	elif not allow_attend:
+		quiz_id = '''<ul><li class="alert alert-info medium">
+				Kindly complete the previous Lesson
+			</li><br>
+			</ul>'''
 	youtube = "{{ YouTubeVideo('" + youtube + "') }}" if youtube else ""
 	text = youtube + body + quiz_id
 

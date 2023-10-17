@@ -145,19 +145,27 @@ def quiz_summary(quiz,course, results, final_assessment):
 		quiz_answer = frappe.get_all("LMS Course Quiz Answer Submission",{'employee':frappe.session.user,'docstatus':1},['course_quiz_assignment','quiz'],as_list=True,order_by='creation desc')
 		quiz_id = [item for item in quiz_assign if item not in quiz_answer]
 		ass = quiz_id[0][0] if quiz_id else None
-		submission = frappe.get_doc(
-					{
-						"doctype": "LMS Course Quiz Answer Submission",
-						"quiz": quiz,
-						"result": results,
-						"score": score,
-						"course":course,
-						"employee": frappe.session.user,
-						'course_quiz_assignment':ass,
-						'passing_percentage':frappe.get_value("LMS Course Quiz Assignment",ass,'passing_percentage') or 0
-					}
-				)
-
+		# submission = frappe.get_doc(
+		# 			{
+		# 				"doctype": "LMS Course Quiz Answer Submission",
+		# 				"quiz": quiz,
+		# 				"result": results,
+		# 				"score": score,
+		# 				"course":course,
+		# 				"employee": frappe.session.user,
+		# 				'course_quiz_assignment':ass,
+		# 				'passing_percentage':frappe.get_value("LMS Course Quiz Assignment",ass,'passing_percentage') or 0
+		# 			}
+		# 		)
+		submission = frappe.new_doc("LMS Course Quiz Answer Submission")
+		submission.quiz= quiz
+		submission.update({
+			'result':results
+		})
+		submission.score= score
+		submission.course = course
+		submission.course_quiz_assignment = ass
+		submission.passing_percentage= frappe.get_value("LMS Course Quiz Assignment",ass,'passing_percentage') or 0
 		submission.save(ignore_permissions=True)
 		submission.submit()
 
